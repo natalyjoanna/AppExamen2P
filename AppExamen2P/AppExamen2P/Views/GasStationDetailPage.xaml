@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AppExamen2P.Converters"
+             x:Class="AppExamen2P.Views.GasStationDetailPage"
+             Title="Detalle">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Eliminar" Command="{Binding DeleteCommand}" />
+        <ToolbarItem Text="Guardar" Command="{Binding SaveCommand}"/>
+        <ToolbarItem Text="Mapa" Command="{Binding MapsCommand}"/>
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Margin="20"
+                VerticalOptions="StartAndExpand">
+                <Label
+                    Text="Nombre de la sucursal"/>
+                <Entry
+                    Text="{Binding GasStationSelected.Name}"/>
+                <Label
+                    Text="Nombre de la compañia de la gasolinera"/>
+                <Entry
+                    Text="{Binding GasStationSelected.Company}"/>
+                <Label
+                    Text="Precio de la gasolina verde"/>
+                <Entry
+                    Text="{Binding GasStationSelected.GreenGasPrice}"/>
+                <Label
+                    Text="Precio de la gasolina roja"/>
+                <Entry
+                    Text="{Binding GasStationSelected.RedGasPrice}"/>
+                <Label
+                    Text="Precio del diesel"/>
+                <Entry
+                    Text="{Binding GasStationSelected.DieselPrice}"/>
+                <Label
+                    Text="Fotografia"/>
+                <Image 
+                    Source="{Binding Picture, Converter={StaticResource ImageConverter}}"
+                    WidthRequest="100"/>
+                <Button
+                    Text="Cancelar"
+                    Command="{Binding CancelCommand}"/>
+                <Button
+                    Text="Tomar Fotografia"
+                    Command="{Binding TakePictureCommand}"/>
+                <Button
+                    Text="Seleccionar Fotografia"
+                    Command="{Binding SelectPictureCommand}"/>
+                <Button
+                    Text="Ubicacion"
+                    Command="{Binding LocationCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
